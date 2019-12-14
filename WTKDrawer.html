@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+</head>
+<body>
+
+<canvas id="myCanvas" width="500" height="400" style="border:1px solid #c3c3c3;">
+您的浏览器不支持 HTML5 canvas 标签。
+</canvas>
+<textarea id="wtk"></textarea>
+<button onclick="draw()">Draw</button>
+<script>
+
+
+
+function draw() {
+	var wtk = document.getElementById("wtk").value;
+	var coords = wtk.split(", ");
+	var c=document.getElementById("myCanvas");
+	var ctx=c.getContext("2d");
+	var colors = ["#00FF00", "#0000FF"]
+	var coord = coords[0].split(" ");
+	for (var i = 0; i < coords.length - 1; i ++) {
+		ctx.beginPath();
+		var xy = coords[i].split(" ");
+		ctx.moveTo(xy[0], xy[1]);
+		xy = coords[i+1].split(" ");
+		ctx.lineTo(xy[0], xy[1]);
+		ctx.strokeStyle = colors[i%colors.length];
+		ctx.stroke();
+		
+	}
+	
+	
+}
+</script>
+
+</body>
+</html>
